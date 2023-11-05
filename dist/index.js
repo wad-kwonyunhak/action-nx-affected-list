@@ -148,7 +148,7 @@ function getNxAffected({ base, head, type, workspace }) {
         return [];
     }
     const affected = result
-        .split(' ')
+        .split(',')
         .map(x => x.trim())
         .filter(x => x.length > 0);
     return affected || [];
@@ -715,7 +715,7 @@ class OidcClient {
                 .catch(error => {
                 throw new Error(`Failed to get ID Token. \n 
         Error Code : ${error.statusCode}\n 
-        Error Message: ${error.result.message}`);
+        Error Message: ${error.message}`);
             });
             const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
             if (!id_token) {
